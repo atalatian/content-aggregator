@@ -10,11 +10,12 @@ let database = require(path.resolve(__dirname, "../user_modules/database.js"));
 
 router.get("/", function (req, res, next) {
     database.get_scraps(function (row, c) {
+        console.log(row);
         let showed_scraps = fs.readFileSync(path.resolve(__dirname,
             "../public/jsons/reddit/showed_scraps.json"),
             "utf8");
         res.render("reddit");
-    })
+    });
 });
 
 
