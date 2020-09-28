@@ -1,7 +1,6 @@
 const pg = require('pg');
 const client = new pg.Client({
     user: "ujodladagkguwr",
-    url: "postgres://ujodladagkguwr:7caf0cddb571bae9e9a0a76a4ed4a465630ca3a40d06dee21ec3d7327cb21bd2@ec2-54-158-122-162.compute-1.amazonaws.com:5432/d43j6lgcq3boag",
     host: 'ec2-54-158-122-162.compute-1.amazonaws.com',
     database: "d43j6lgcq3boag",
     password: "7caf0cddb571bae9e9a0a76a4ed4a465630ca3a40d06dee21ec3d7327cb21bd2",
