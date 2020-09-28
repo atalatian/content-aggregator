@@ -1,0 +1,22 @@
+extends layout
+
+block heading
+    link(rel="stylesheet" href="stylesheets/index/style.css")
+
+block content
+    nav(class="navbar navbar-expand-sm bg-dark navbar-dark")
+        a(class="navbar-brand" href="#") Content Aggregator
+        ul(class="navbar-nav")
+            for category in categories
+                li(class="nav-item")
+                    a(class="nav-link" href="http://localhost:5000/" + category)=category
+    div(class="container")
+        div(class="row")
+            for category in categories
+                if category === "Reddit"
+                    div(class="col-lg-4")
+                        div(class="card" style="width:350px")
+                            img(class="card-img-top" src="images/reddit-logo.png" alt="Card image" style="width:100%")
+                            a(href="http://localhost:5000/" + category class="custom-link")
+                                div(class="card-body")
+                                    h4(class="card-title")=category
