@@ -13,6 +13,15 @@ try {
     console.log(e.message);
 }
 
+try{
+    client.query("DROP TABLE scraps");
+}catch(e){
+    console.log("First Launch.");
+}
+
+client.query("CREATE TABLE scraps(reddit_scraps json, time_scraps json");
+
+
 function get_scraps(func) {
     client.query("SELECT * FROM scraps").then(function (res) {
         func(res.rows[0], client);
