@@ -1,10 +1,9 @@
 const pg = require('pg');
 const client = new pg.Client({
-    user: "ujodladagkguwr",
-    host: 'ec2-54-158-122-162.compute-1.amazonaws.com',
-    database: "d43j6lgcq3boag",
-    password: "7caf0cddb571bae9e9a0a76a4ed4a465630ca3a40d06dee21ec3d7327cb21bd2",
-    port: 5432,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 try {
@@ -13,13 +12,16 @@ try {
     console.log(e.message);
 }
 
-try{
+try {
     client.query("DROP TABLE scraps");
-}catch(e){
-    console.log("First Launch.");
+    console.log("Table deleted.");
+}catch (e) {
+    console.log("First Launch");
 }
 
-client.query("CREATE TABLE scraps(reddit_scraps json, time_scraps json");
+client.query("CREATE TABLE scraps(reddit_scraps json, time_scraps json)").then(function (res) {
+    console.log("Table created.");
+})
 
 
 function get_scraps(func) {
